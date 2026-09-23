@@ -1,7 +1,7 @@
 # Goish HTTP server
 
 ```sh
-cd /home/chanwit/projects/laya
+cd ~/projects/laya
 ./laya serve models/laya_english_f16.gguf --host 127.0.0.1 --port 8080 --threads 4
 ```
 
