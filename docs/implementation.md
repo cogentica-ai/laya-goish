@@ -26,21 +26,20 @@ uses four token rows per AVX2/FMA kernel, and divides disjoint output token
 rows among Goish goroutines. The WaitGroup joins every worker before input
 or output storage can be released.
 
-## Goish alpha.13 preemption and AVX
+## Goish alpha.14 preemption and AVX
 
-The installed Goish runtime's `runtime/preempt.rs` asynchronous preemption
-trampoline uses `fxsave64` / `fxrstor64`. Those instructions preserve XMM
-registers, but not the upper 128 bits of YMM registers. An unguarded AVX
-kernel produced small, nondeterministic differences on repeated requests.
+Goish `1.0.0-alpha.14` preserves OS-enabled AVX and AVX-512 state with
+`xsave64` / `xrstor64` during asynchronous preemption. Each suspended
+goroutine keeps its register snapshot on its own stack, including when it
+resumes on another worker.
 
-The application therefore calls Goish `runtime::sched::acquirem()` before
-each SIMD kernel and `releasem()` after returning from it. The kernel is
-allocation-free, never yields, and is marked `inline(never)`. It returns
-before the preemption guard is released. Scheduling remains enabled
-between kernels. The shared Goish checkout is not modified.
+Laya's SIMD kernels remain preemptible. The `acquirem()` / `releasem()`
+workaround used with alpha.13 has been removed: that runtime saved XMM
+registers but lost the upper YMM lanes, causing nondeterministic results
+when AVX kernels were interrupted.
 
 The target has no global AVX/native-CPU compilation flag: AVX2/FMA is
-enabled only on the guarded function. The application verifies CPU and OS
+enabled only on the kernel function. The application verifies CPU and OS
 AVX support before loading inference weights.
 
 The daemon repeatability regression exercises identical requests separated

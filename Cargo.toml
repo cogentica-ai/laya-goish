@@ -5,7 +5,7 @@ edition = "2021"
 description = "Laya GGUF decision inference in no_std Goish Rust"
 
 [dependencies]
-goish = { git = "https://github.com/cogentica-ai/goish", rev = "e72d157e24f83354df8639bf8d2e2d43b8f4bbe1" }
+goish = "=1.0.0-alpha.14"
 libm = { version = "0.2", default-features = false }
 serde = { version = "1", default-features = false, features = ["alloc"] }
 serde_json = { version = "1", default-features = false, features = ["alloc"] }

@@ -4,8 +4,9 @@ version = 4
 
 [[package]]
 name = "goish"
-version = "1.0.0-alpha.13"
-source = "git+https://github.com/cogentica-ai/goish?rev=e72d157e24f83354df8639bf8d2e2d43b8f4bbe1#e72d157e24f83354df8639bf8d2e2d43b8f4bbe1"
+version = "1.0.0-alpha.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b8bc89c73727d8eae13c2f4e50b04db70ee7192356e2762dc7632da4cc052894"
 dependencies = [
  "goish-macros",
  "libm",
@@ -13,8 +14,9 @@ dependencies = [
 
 [[package]]
 name = "goish-macros"
-version = "1.0.0-alpha.13"
-source = "git+https://github.com/cogentica-ai/goish?rev=e72d157e24f83354df8639bf8d2e2d43b8f4bbe1#e72d157e24f83354df8639bf8d2e2d43b8f4bbe1"
+version = "1.0.0-alpha.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2d6e088b813f9a92b6dace6a763fd0cf7014529b4f2b4ddfe01413cf592073f9"
 
 [[package]]
 name = "itoa"

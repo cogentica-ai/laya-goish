@@ -68,7 +68,7 @@ to 30 seconds. Requests still active at that deadline are terminated with the
 process. Disconnected clients stop remaining work between question forwards;
 a forward already running completes before cancellation is checked.
 
-Goish alpha.13 buffers incoming bodies before calling the handler, with its
+Goish alpha.14 buffers incoming bodies before calling the handler, with its
 own 16 MiB parser limit. The application then enforces its 1 MiB API limit.
 Connections are capped at 32, headers at 16 KiB, with header/read/idle deadlines
 configured. No HTTP service manager or automatic reboot restart is installed.

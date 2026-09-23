@@ -73,7 +73,8 @@ The implementation includes all 24 Qwen3.5 text layers: 18 Gated-DeltaNet
 layers with causal convolution and recurrent state, six causal grouped-query
 attention layers with partial RoPE and output gates, zero-centered RMSNorm,
 SwiGLU, the 256-slot head and per-type temperatures. Recurrent state is fresh
-for every forward. F32 matrix kernels use the existing Goish preemption guard.
+for every forward. F32 matrix kernels use Goish alpha.14's XSAVE/XRSTOR
+support and remain preemptible.
 
 The tokenizer uses the published Unicode pretokenization, NFC normalization,
 byte-level BPE and explicit added tokens. Formatting preserves question/option

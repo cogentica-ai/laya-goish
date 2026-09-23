@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "compared_to_previous_binary": true,
+  "signal": "SIGURG",
+  "cases": [
+    {
+      "model": "laya_english_f16.gguf",
+      "threads": 1,
+      "repetitions": 8,
+      "signals_delivered": 24085,
+      "exact_output_match": true
+    },
+    {
+      "model": "laya_english_f16.gguf",
+      "threads": 4,
+      "repetitions": 8,
+      "signals_delivered": 6755,
+      "exact_output_match": true
+    },
+    {
+      "model": "laya_english_q8_0.gguf",
+      "threads": 1,
+      "repetitions": 8,
+      "signals_delivered": 23045,
+      "exact_output_match": true
+    },
+    {
+      "model": "laya_english_q8_0.gguf",
+      "threads": 4,
+      "repetitions": 8,
+      "signals_delivered": 6960,
+      "exact_output_match": true
+    },
+    {
+      "model": "laya_english_ud_q4_k_m.gguf",
+      "threads": 1,
+      "repetitions": 8,
+      "signals_delivered": 22850,
+      "exact_output_match": true
+    },
+    {
+      "model": "laya_english_ud_q4_k_m.gguf",
+      "threads": 4,
+      "repetitions": 8,
+      "signals_delivered": 8601,
+      "exact_output_match": true
+    },
+    {
+      "model": "openthai_systemone_v03_f16.gguf",
+      "threads": 1,
+      "repetitions": 8,
+      "signals_delivered": 112585,
+      "exact_output_match": true
+    },
+    {
+      "model": "openthai_systemone_v03_f16.gguf",
+      "threads": 4,
+      "repetitions": 8,
+      "signals_delivered": 36350,
+      "exact_output_match": true
+    }
+  ]
+}

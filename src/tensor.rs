@@ -38,10 +38,8 @@ impl Matrix {
         out
     }
 }
-// Goish alpha.13 async preemption uses FXSAVE (XMM only), not XSAVE.
-// Keep YMM state within a non-preemptible, allocation-free leaf. The kernel
-// returns (including vzeroupper) before releasing the M; scheduling remains
-// enabled between matrix operations. Do not move AVX into this wrapper.
+// Goish alpha.14 preserves YMM state with XSAVE/XRSTOR during asynchronous
+// preemption. SIMD kernels can remain preemptible while workers share a P.
 #[inline(never)]
 fn run_kernel(
     xp: usize,
@@ -53,11 +51,9 @@ fn run_kernel(
     start: usize,
     end: usize,
 ) {
-    goish::runtime::sched::acquirem();
     unsafe {
         kernel(xp, wp, op, bp, k, n, start, end);
     }
-    goish::runtime::sched::releasem();
 }
 #[inline(never)]
 #[target_feature(enable = "avx2,fma")]

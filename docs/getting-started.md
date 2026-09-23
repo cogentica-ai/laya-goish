@@ -122,8 +122,8 @@ and OpenThai option permutations. There is no GPU backend in this release.
 
 ## Build from source
 
-Install Rust/Cargo and Python 3.11 or newer. Cargo fetches Goish from the
-public repository at the exact revision pinned in `Cargo.toml` and
+Install Rust/Cargo and Python 3.11 or newer. Cargo fetches Goish
+`1.0.0-alpha.14` from crates.io, pinned exactly in `Cargo.toml` and
 `Cargo.lock`. See [provenance.json](provenance.json).
 
 Use the release builder to remap source/dependency paths before compilation

@@ -1,8 +1,8 @@
 {
   "upstream_repository": "https://github.com/monatis/ggmlc",
   "upstream_commit": "680dd84584dd1cb4de670b1d5b50450f39c805ff",
-  "goish_commit": "e72d157e24f83354df8639bf8d2e2d43b8f4bbe1",
-  "goish_version": "1.0.0-alpha.13",
+  "goish_commit": "28e1f88eb68e77eceeb60728ad17166c5c9cf326",
+  "goish_version": "1.0.0-alpha.14",
   "model_repository": "https://huggingface.co/mys/laya-GGUF",
   "goish_repository": "https://github.com/cogentica-ai/goish"
 }
