@@ -151,15 +151,7 @@ fn norm(g: &Gguf, graph: &J, i: usize) -> Result<Norm, String> {
 }
 impl Model {
     pub fn new(g: Gguf, threads: usize) -> Result<Self, String> {
-        // These kernels require AVX2/FMA; fail explicitly on other CPUs.
-        let f = core::arch::x86_64::__cpuid(1);
-        let f7 = core::arch::x86_64::__cpuid_count(7, 0);
-        if f.ecx & (1 << 12) == 0 || f.ecx & (1 << 27) == 0 || f7.ebx & (1 << 5) == 0 {
-            return Err("CPU requires AVX2, FMA and OSXSAVE".into());
-        }
-        if unsafe { core::arch::x86_64::_xgetbv(0) } & 6 != 6 {
-            return Err("OS has not enabled AVX state".into());
-        }
+        crate::tensor::check_cpu()?;
         if g.get("general.architecture").str() != "ggmlc"
             || !g.get("laya.checkpoint").str().contains("laya")
         {
