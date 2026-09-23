@@ -55,10 +55,6 @@ bodies 413. Raw model outputs are disabled unless the server starts with
 
 The default bind address is **127.0.0.1:8080**. To connect from a workstation:
 
-```sh
-ssh -i ~/.ssh/desk-test-vm_ed25519 -L 8080:127.0.0.1:8080 chanwit@64.176.80.125
-```
-
 Set `LAYA_API_KEY` (or fallback `TYPESAFE_API_KEY`) before starting the server to
 require `Authorization: Bearer <key>` on decision and model-list routes.
 Health, the root description and presets remain public. Keys are never logged.
