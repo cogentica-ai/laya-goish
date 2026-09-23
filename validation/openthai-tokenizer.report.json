@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": 0,
+      "token_count": 0,
+      "exact": true
+    },
+    {
+      "case": 1,
+      "token_count": 16,
+      "exact": true
+    },
+    {
+      "case": 2,
+      "token_count": 14,
+      "exact": true
+    },
+    {
+      "case": 3,
+      "token_count": 7,
+      "exact": true
+    },
+    {
+      "case": 4,
+      "token_count": 28,
+      "exact": true
+    },
+    {
+      "case": 5,
+      "token_count": 20,
+      "exact": true
+    },
+    {
+      "case": 6,
+      "token_count": 16,
+      "exact": true
+    },
+    {
+      "case": 7,
+      "token_count": 21,
+      "exact": true
+    },
+    {
+      "case": 8,
+      "token_count": 3720,
+      "exact": true
+    }
+  ]
+}

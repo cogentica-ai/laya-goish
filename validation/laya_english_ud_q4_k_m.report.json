@@ -1,0 +1,69 @@
+{
+  "model": "models/laya_english_ud_q4_k_m.gguf",
+  "cases": [
+    {
+      "case": "refund",
+      "input_tokens": 45,
+      "latency_ms": 1712,
+      "questions": [
+        {
+          "id": "refund",
+          "max_logit_error": 0.03823557464599592,
+          "max_probability_error": 0.0028912177890060425,
+          "max_action_logit_error": 31.67357421875022
+        }
+      ]
+    },
+    {
+      "case": "types",
+      "input_tokens": 183,
+      "latency_ms": 6187,
+      "questions": [
+        {
+          "id": "category",
+          "max_logit_error": 0.11415302291870155,
+          "max_probability_error": 0.0030433928781248287,
+          "max_action_logit_error": 56.7529882812496
+        },
+        {
+          "id": "urgency",
+          "max_logit_error": 0.06381650459289556,
+          "max_probability_error": 0.008493861776157352,
+          "max_action_logit_error": 25.117871093750182
+        },
+        {
+          "id": "refund",
+          "max_logit_error": 0.02470398575019836,
+          "max_probability_error": 0.001621634235234884,
+          "max_action_logit_error": 40.061191406250146
+        }
+      ]
+    },
+    {
+      "case": "unicode",
+      "input_tokens": 68,
+      "latency_ms": 1934,
+      "questions": [
+        {
+          "id": "refund",
+          "max_logit_error": 0.11570861196899418,
+          "max_probability_error": 0.013060609002762458,
+          "max_action_logit_error": 12.362890625000091
+        }
+      ]
+    },
+    {
+      "case": "truncation",
+      "input_tokens": 512,
+      "latency_ms": 25277,
+      "questions": [
+        {
+          "id": "refund",
+          "max_logit_error": 0.09087746255264283,
+          "max_probability_error": 0.01076236714474621,
+          "max_action_logit_error": 13.767304687499745
+        }
+      ]
+    }
+  ]
+}

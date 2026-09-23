@@ -1,0 +1,10 @@
+.git/
+target/
+models/
+upstream/
+reference-build/
+.venv/
+.tokensave/
+*.log
+validation/*.actual.json
+validation/*.actual.log

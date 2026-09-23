@@ -1,0 +1,72 @@
+{
+  "original_100_sequential_inferences": {
+    "round_seconds": [
+      30.74,
+      29.83,
+      29.58,
+      30.569999999999993,
+      29.960000000000008
+    ],
+    "total_seconds": 150.68,
+    "mean_ms": 1506.8000000000002,
+    "requests_per_second": 0.6636580833554553
+  },
+  "new_10_request_sample": {
+    "mean_ms": 1502.339,
+    "median_ms": 1498.6999999999998,
+    "min_ms": 1439.18,
+    "max_ms": 1580.75,
+    "rows": [
+      {
+        "http_ms": 1517.59,
+        "server_ms": 1512,
+        "input_tokens": 45
+      },
+      {
+        "http_ms": 1473.81,
+        "server_ms": 1472,
+        "input_tokens": 45
+      },
+      {
+        "http_ms": 1478.19,
+        "server_ms": 1476,
+        "input_tokens": 45
+      },
+      {
+        "http_ms": 1528.24,
+        "server_ms": 1526,
+        "input_tokens": 45
+      },
+      {
+        "http_ms": 1533.57,
+        "server_ms": 1532,
+        "input_tokens": 45
+      },
+      {
+        "http_ms": 1538.18,
+        "server_ms": 1536,
+        "input_tokens": 45
+      },
+      {
+        "http_ms": 1479.81,
+        "server_ms": 1478,
+        "input_tokens": 45
+      },
+      {
+        "http_ms": 1439.18,
+        "server_ms": 1437,
+        "input_tokens": 45
+      },
+      {
+        "http_ms": 1580.75,
+        "server_ms": 1579,
+        "input_tokens": 45
+      },
+      {
+        "http_ms": 1454.07,
+        "server_ms": 1452,
+        "input_tokens": 45
+      }
+    ]
+  }
+}

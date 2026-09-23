@@ -1,0 +1,10 @@
+{
+  "source": "iapp/OpenThai-SystemOne",
+  "revision": "f3709948b5e3cc9606a57e74ba62b7a639d17dd3",
+  "output": "models/openthai_reproduction.gguf",
+  "tensor_count": 323,
+  "max_abs_weight_conversion_error": 2.9802322387695312e-08,
+  "sha256": "2441d5b503d6c3d74374bf2e0a85adf371d154eef28a72e906cd33e4cf653bb5",
+  "context_length": 4096,
+  "format": "GGUF v3, openthai_systemone architecture, F16 matrices/F32 vectors"
+}

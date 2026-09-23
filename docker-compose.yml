@@ -1,0 +1,49 @@
+services:
+  laya:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: laya-goish:0.1.0
+    platform: linux/amd64
+    ports:
+      - "8080:8080"
+    environment:
+      LAYA_API_KEY: ${LAYA_API_KEY:-}
+    volumes:
+      - ./models:/models:ro
+    command:
+      [
+        "serve",
+        "/models/laya_english_f16.gguf",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8080",
+        "--threads",
+        "4",
+      ]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # One-off helper to fetch GGUF model weights into ./models before `laya`
+  # starts. Reuses the laya image (it already has bash + curl) but runs the
+  # repo's own download script instead of the server.
+  #   docker compose --profile tools run --rm download-models f16
+  download-models:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: laya-goish:0.1.0
+    platform: linux/amd64
+    profiles: ["tools"]
+    entrypoint: ["bash", "/repo/scripts/download-models.sh"]
+    command: ["f16"]
+    working_dir: /repo
+    volumes:
+      - ./scripts:/repo/scripts:ro
+      - ./models:/repo/models

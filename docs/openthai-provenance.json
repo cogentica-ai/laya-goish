@@ -1,0 +1,19 @@
+{
+  "model": "iapp/OpenThai-SystemOne",
+  "version": "v0.3",
+  "hf_revision": "f3709948b5e3cc9606a57e74ba62b7a639d17dd3",
+  "client_repository": "https://github.com/iapp-technology/openthai-systemone",
+  "client_revision": "5d04bcca0c58bd10e7dac2d3d369d8f760bea6cf",
+  "transformers_version": "5.17.0",
+  "torch_reference_version": "2.14.0+cpu",
+  "model_sha256": "e5bf18fbd975eb55de3ae8dd328f6e48263fea9d3e47b7cfe52306e98ae5f55a",
+  "tokenizer_sha256": "d3400f1532d54f98d82b24c503e61908aa66f84e22e566e59fc80494add3a5c3",
+  "files": {
+    "config.json": "93705b1bb8048756c422c14f34ec413a3aeb0623cab98476ed3a614a8d703707",
+    "configuration.py": "10b3d254c78536dcd3439a7537a1f5ce0299ed24da8795bb7a7f0a9c8b843056",
+    "formatting.py": "b40219f32091360098f0f8559c2d9c7f5b2517b7b25441a68e60f91f314bb652",
+    "modeling.py": "072189727b34bacc40b0a376fa4b72baf5dd22d32693b2dbc202c02065923690",
+    "types.py": "1f9900a7d94aae82d3bc6351fa155d9d2b2ee1a4eb11c281e7d8d322dbaacad6",
+    "client.py": "5edd67d2e9765b18f6dff8826585f67663d47c590ad9b834a14b67ab3e1dbaa3"
+  }
+}
