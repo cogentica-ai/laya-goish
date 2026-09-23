@@ -34,6 +34,34 @@ curl http://127.0.0.1:8080/v1/decide \
 The server listens on loopback by default. See [HTTP access and authentication](http.md#access-and-authentication)
 for remote access, bearer tokens, batches, and lifecycle behavior.
 
+## Run with Docker (including Apple Silicon / M2)
+
+The executable requires Linux x86-64 with AVX2/FMA and cannot currently be
+built for arm64 (its `goish` dependency is an unpublished crate; see
+[build from source](#build-from-source)). On an Apple Silicon Mac, Docker
+Desktop runs `linux/amd64` images through Rosetta 2 or QEMU emulation, which
+is enough to run the statically linked release binary.
+
+Stage the release binary once, either with `gh` against the private repo:
+
+```sh
+scripts/docker/fetch-release.sh v0.1.0
+```
+
+or by manually extracting a release tarball and copying its `laya`
+executable to `dist/laya`. Then:
+
+```sh
+docker compose --profile tools run --rm download-models f16
+docker compose up --build
+curl http://127.0.0.1:8080/health
+```
+
+`docker-compose.yml` binds `./models` into the container read-only and
+`./scripts` for the model-download helper. Edit the `laya` service's
+`command:` to load additional models or change ports/threads; set
+`LAYA_API_KEY` in the environment to require bearer authentication.
+
 ## Use a preset
 
 Ten presets provide ready-made questions. List them or run one from the CLI:

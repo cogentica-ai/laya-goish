@@ -13,3 +13,6 @@
 
 /server.pid
 __pycache__/
+
+/dist/*
+!/dist/.gitkeep
