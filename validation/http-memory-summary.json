@@ -1,0 +1,29 @@
+{
+  "result": "No sustained memory growth or resource leak observed in this bounded test.",
+  "server_pid": 338275,
+  "test_elapsed_s": 313.81,
+  "requests": 120587,
+  "mixed_http_requests": 120000,
+  "completed_inferences": 110,
+  "expected_busy_rejections": 155,
+  "oversized_body_rejections": 320,
+  "unexpected_errors": [],
+  "initial_rss_mib": 2445.9453125,
+  "final_rss_mib": 2453.46484375,
+  "rss_growth_mib": 7.51953125,
+  "additional_100k_rss_growth_kib": 44,
+  "sampled_peak_rss_mib": 2453.58984375,
+  "initial_fds": 12,
+  "final_fds": 12,
+  "initial_threads": 5,
+  "final_threads": 5,
+  "final_swap_kib": 0,
+  "health": {
+    "status": "ok",
+    "model": "laya",
+    "family": "english",
+    "device": "cpu",
+    "busy": false
+  },
+  "limitations": "Single model, fixed inference request, about five minutes of load and idle observation; RSS plateau does not prove every allocation is freed."
+}

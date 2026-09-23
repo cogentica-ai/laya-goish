@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": [
+    "duplicate identities, default selection, unreadable paths and unsupported architectures fail before weight loading",
+    "single-model CLI baselines",
+    "both models loaded; identities, aliases and default listed",
+    "alternating backends, default and aliases match CLI without state contamination",
+    "routing errors and model-specific limits return 422",
+    "batch uses selected backend and preserves result order",
+    "global overload protection covers cross-model requests; health remains responsive",
+    "shutdown drains inference with both backends loaded",
+    "explicit default model and shared bearer authentication"
+  ]
+}

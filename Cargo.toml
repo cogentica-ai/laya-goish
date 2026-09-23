@@ -1,0 +1,22 @@
+[package]
+name = "laya"
+version = "0.1.0"
+edition = "2021"
+description = "Laya GGUF decision inference in no_std Goish Rust"
+
+[dependencies]
+goish = { path = "/home/chanwit/goro-workspace/goish-v1" }
+libm = { version = "0.2", default-features = false }
+serde = { version = "1", default-features = false, features = ["alloc"] }
+serde_json = { version = "1", default-features = false, features = ["alloc"] }
+
+unicode-normalization = { version = "0.1", default-features = false }
+unicode-general-category = "1"
+
+[profile.dev]
+panic = "abort"
+[profile.release]
+panic = "abort"
+lto = "thin"
+codegen-units = 1
+debug = 1

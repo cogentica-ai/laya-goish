@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "checkpoint": "v0.3",
+  "cases": 10,
+  "max_raw_logit_error": 3.3855438232421875e-05,
+  "max_answer_numeric_error": 1.1920928955078125e-06,
+  "exact_token_ids_and_answer_positions": true,
+  "timings": [
+    {
+      "case": 0,
+      "input_tokens": 32,
+      "output_tokens": 0,
+      "permutations": 1,
+      "truncated_state": false,
+      "latency_ms": 965
+    },
+    {
+      "case": 1,
+      "input_tokens": 161,
+      "output_tokens": 0,
+      "permutations": 1,
+      "truncated_state": false,
+      "latency_ms": 5404
+    },
+    {
+      "case": 7,
+      "input_tokens": 1437,
+      "output_tokens": 0,
+      "permutations": 1,
+      "truncated_state": false,
+      "latency_ms": 57884
+    },
+    {
+      "case": 8,
+      "input_tokens": 60,
+      "output_tokens": 0,
+      "permutations": 8,
+      "truncated_state": false,
+      "latency_ms": 13191
+    }
+  ],
+  "gguf_bytes": 1516424576,
+  "runtime": "static no_std Goish Rust, CPU 4 threads",
+  "limits": {
+    "context_tokens": 4096,
+    "state_tokens": 2048,
+    "max_choice_options": 255
+  },
+  "laya_cli_regression": "passed",
+  "laya_http_regression": "passed",
+  "binary_sha256": "72c9f3b8bb5ba7426c2051d54f468d1d55798e61dbfad1cc148870ffc20ffdc2"
+}

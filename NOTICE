@@ -1,0 +1,31 @@
+Source attribution
+
+Laya inference and request semantics were ported from:
+  https://github.com/monatis/ggmlc
+  examples/laya/laya_trunk.py
+  examples/laya/src/sequence.cpp
+  examples/laya/src/questions.cpp
+  examples/laya/src/recipe.cpp
+  examples/laya/src/presets.cpp
+  runtime/src/pipeline/tokenizer.cpp
+
+Quantized block layouts follow ggml (vendored by ggmlc):
+  third_party/ggml/src/ggml-quants.c
+  third_party/ggml/src/ggml-common.h
+
+The preset text in presets.json is extracted from upstream's presets.cpp.
+Original source snapshots retain their original notices in upstream/.
+See docs/provenance.json for the exact source revisions.
+Model weights are downloaded separately from mys/laya-GGUF; their terms
+remain those supplied by the model publisher.
+Goish and Rust crate dependencies retain their own licenses.
+
+OpenThai-SystemOne support (src/models/openthai/, Qwen tokenization, converter):
+Derived from the Apache-2.0 OpenThai-SystemOne model/formatter/client by
+iApp Technology / OpenThai, and Qwen3.5 equations in Hugging Face Transformers.
+Copyright 2025 The Qwen Team and The HuggingFace Inc. team. All rights reserved.
+https://huggingface.co/iapp/OpenThai-SystemOne
+https://github.com/iapp-technology/openthai-systemone
+https://github.com/huggingface/transformers/tree/v5.17.0/src/transformers/models/qwen3_5
+These portions have been modified for no_std Goish Rust and GGUF inference.
+See LICENSES/Apache-2.0.txt and docs/openthai.md.

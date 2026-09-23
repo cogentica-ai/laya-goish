@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "checks": [
+    "GGUF reproduction SHA-256 identical",
+    "truncated state token IDs and answer positions match upstream",
+    "repeated request after different input is bitwise identical",
+    "one/four-thread raw logits and answers are bitwise identical"
+  ]
+}

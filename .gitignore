@@ -1,0 +1,15 @@
+/target/
+/upstream/
+/reference-build/
+/models/
+/*.log
+/model-index.json
+/graph.json
+/.venv/
+/validation/*.actual.json
+
+/validation/*.log
+/validation/*.actual.log
+
+/server.pid
+__pycache__/

@@ -1,0 +1,134 @@
+{
+  "status": "passed",
+  "pid": 517679,
+  "url": "http://127.0.0.1:8080",
+  "binary_sha256": "69fd44698e67379ddaaf6c7b7409aa404ac59899af58b552cb3a0663607db5b2",
+  "health": {
+    "status": "ok",
+    "model": "laya",
+    "family": "english",
+    "device": "cpu",
+    "models": [
+      "laya",
+      "openthai-systemone"
+    ],
+    "busy": false
+  },
+  "listing": {
+    "models": [
+      {
+        "name": "laya",
+        "canonical_name": "laya",
+        "architecture": "ggmlc",
+        "family": "english",
+        "default": true,
+        "description": "Locally loaded laya decision model on Goish Rust",
+        "release_date": "2026-09-20"
+      },
+      {
+        "name": "english",
+        "canonical_name": "laya",
+        "architecture": "ggmlc",
+        "family": "english",
+        "default": true,
+        "description": "Locally loaded laya decision model on Goish Rust",
+        "release_date": "2026-09-20"
+      },
+      {
+        "name": "jev-latest",
+        "canonical_name": "laya",
+        "architecture": "ggmlc",
+        "family": "english",
+        "default": true,
+        "description": "Locally loaded laya decision model on Goish Rust",
+        "release_date": "2026-09-20"
+      },
+      {
+        "name": "openthai-systemone",
+        "canonical_name": "openthai-systemone",
+        "architecture": "openthai_systemone",
+        "family": "openthai-systemone",
+        "default": false,
+        "description": "Locally loaded openthai-systemone decision model on Goish Rust",
+        "release_date": "2026-09-22"
+      }
+    ],
+    "default_model": "laya"
+  },
+  "live_requests": [
+    {
+      "model": "laya",
+      "status": 200,
+      "usage": {
+        "input_tokens": 45,
+        "output_tokens": 0,
+        "latency_ms": 1388
+      },
+      "answers": {
+        "refund": {
+          "type": "noul",
+          "noul": 0.8911915421485901,
+          "confidence": 0.8911915421485901,
+          "probabilities": {
+            "false": 0.1088084876537323,
+            "true": 0.8911915421485901
+          },
+          "action": {
+            "act_probability": 1
+          }
+        }
+      }
+    },
+    {
+      "model": "openthai-systemone",
+      "status": 200,
+      "usage": {
+        "input_tokens": 161,
+        "output_tokens": 0,
+        "permutations": 1,
+        "truncated_state": false,
+        "latency_ms": 5064
+      },
+      "answers": {
+        "department": {
+          "type": "choice",
+          "probabilities": {
+            "billing": 0.9736608862876892,
+            "technical": 0.00490425992757082,
+            "sales": 0.02143489383161068
+          },
+          "confidence": 0.8776302337646484,
+          "choice": "billing",
+          "abstain": 0.008663495071232319
+        },
+        "frustration": {
+          "type": "score",
+          "probabilities": {
+            "0": 0.003723680507391691,
+            "1": 0.017633579671382904,
+            "2": 0.9786427617073059
+          },
+          "confidence": 0.8969993591308594,
+          "score": 1.974919080734253,
+          "legend": {
+            "0": "ใจเย็น",
+            "1": "หงุดหงิดแต่สุภาพ",
+            "2": "โกรธมาก"
+          }
+        },
+        "refund_requested": {
+          "type": "noul",
+          "noul": 0.9858790636062622
+        }
+      }
+    }
+  ],
+  "validation": [
+    "registry routing and lifecycle",
+    "Laya CLI regressions",
+    "Laya HTTP regressions",
+    "OpenThai HTTP regressions",
+    "cargo fmt --check",
+    "git diff --check"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "checks": [
+    "OpenThai health and model identity",
+    "Thai multi-question and English decisions match native CLI exactly",
+    "batch preserves option-order averaging settings",
+    "model, schema, option limits and context overflow return 422",
+    "health stays responsive and overload returns 429 during OpenThai inference"
+  ]
+}

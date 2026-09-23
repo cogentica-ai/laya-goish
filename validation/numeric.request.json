@@ -1,0 +1,1 @@
+{"state": {"amount": 1.23456789, "tiny": 1.23456789e-07, "large": 1e+20, "message": "Please refund this payment."}, "questions": {"refund": {"type": "noul", "instructions": "Does the customer ask for money back?"}}}

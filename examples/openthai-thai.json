@@ -1,0 +1,29 @@
+{
+  "state": {
+    "ticket": "ลูกค้าแจ้งว่าโดนหักเงินซ้ำสองครั้ง ขอเงินคืนด่วน โทรมาสามรอบแล้ว"
+  },
+  "questions": {
+    "department": {
+      "type": "choice",
+      "instructions": "ทีมใดควรรับผิดชอบ",
+      "criteria": {
+        "billing": "การเงิน/ค่าบริการ",
+        "technical": "ระบบใช้งานไม่ได้",
+        "sales": null
+      }
+    },
+    "frustration": {
+      "type": "score",
+      "instructions": "ลูกค้าหงุดหงิดแค่ไหน",
+      "criteria": [
+        "ใจเย็น",
+        "หงุดหงิดแต่สุภาพ",
+        "โกรธมาก"
+      ]
+    },
+    "refund_requested": {
+      "type": "noul",
+      "instructions": "ลูกค้าขอเงินคืนอย่างชัดเจนหรือไม่"
+    }
+  }
+}

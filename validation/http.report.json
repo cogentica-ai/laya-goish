@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "checks": [
+    "health, HEAD, model aliases and 10 presets",
+    "both decision endpoints match CLI exactly, including alias and request id",
+    "chunked JSON request",
+    "JSON errors, methods, content type, model/schema validation and fixed/chunked 1 MiB limit",
+    "health stays responsive during inference; concurrent inference returns 429",
+    "batch matches individual decisions",
+    "client disconnect cancels remaining questions",
+    "SIGTERM drains active inference and exits cleanly",
+    "optional bearer authentication"
+  ]
+}

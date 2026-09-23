@@ -1,0 +1,1 @@
+{"model":"laya","answers":{"refund":{"type":"noul","noul":0.8911915421485901,"confidence":0.8911915421485901,"probabilities":{"false":0.1088084876537323,"true":0.8911915421485901},"action":{"act_probability":1}}},"usage":{"input_tokens":45,"output_tokens":0,"latency_ms":1955}}
