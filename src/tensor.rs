@@ -1,5 +1,4 @@
 use alloc::{string::String, sync::Arc, vec, vec::Vec};
-use core::arch::x86_64::*;
 use goish::{go, sync::WaitGroup};
 pub struct Matrix {
     pub cols: usize,
@@ -38,8 +37,9 @@ impl Matrix {
         out
     }
 }
-// Goish alpha.14 preserves YMM state with XSAVE/XRSTOR during asynchronous
-// preemption. SIMD kernels can remain preemptible while workers share a P.
+// Goish preserves SIMD state during asynchronous preemption (YMM via
+// XSAVE/XRSTOR on x86_64, q0-q31 in the signal context on aarch64), so SIMD
+// kernels can remain preemptible while workers share a P.
 #[inline(never)]
 fn run_kernel(
     xp: usize,
@@ -55,6 +55,26 @@ fn run_kernel(
         kernel(xp, wp, op, bp, k, n, start, end);
     }
 }
+/// Rejects CPUs the matrix kernel cannot run on.
+#[cfg(target_arch = "x86_64")]
+pub fn check_cpu() -> Result<(), String> {
+    use core::arch::x86_64::{__cpuid, __cpuid_count, _xgetbv};
+    let f = __cpuid(1);
+    let f7 = __cpuid_count(7, 0);
+    if f.ecx & (1 << 12) == 0 || f.ecx & (1 << 27) == 0 || f7.ebx & (1 << 5) == 0 {
+        return Err("CPU requires AVX2, FMA and OSXSAVE".into());
+    }
+    if unsafe { _xgetbv(0) } & 6 != 6 {
+        return Err("OS has not enabled AVX state".into());
+    }
+    Ok(())
+}
+/// NEON is mandatory on aarch64, so every CPU qualifies.
+#[cfg(target_arch = "aarch64")]
+pub fn check_cpu() -> Result<(), String> {
+    Ok(())
+}
+#[cfg(target_arch = "x86_64")]
 #[inline(never)]
 #[target_feature(enable = "avx2,fma")]
 unsafe fn kernel(
@@ -67,6 +87,7 @@ unsafe fn kernel(
     start: usize,
     end: usize,
 ) {
+    use core::arch::x86_64::*;
     let x = xp as *const f32;
     let w = wp as *const f32;
     let o = op as *mut f32;
@@ -88,6 +109,54 @@ unsafe fn kernel(
                 let mut lanes = [0f32; 8];
                 _mm256_storeu_ps(lanes.as_mut_ptr(), a[t]);
                 let mut v = lanes.iter().sum::<f32>();
+                for q in j..k {
+                    v += *w.add(c * k + q) * *x.add((r + t) * k + q)
+                }
+                if bp != 0 {
+                    v += *bias.add(c)
+                }
+                *o.add((r + t) * n + c) = v;
+            }
+        }
+        r += nr;
+    }
+}
+#[cfg(target_arch = "aarch64")]
+#[inline(never)]
+unsafe fn kernel(
+    xp: usize,
+    wp: usize,
+    op: usize,
+    bp: usize,
+    k: usize,
+    n: usize,
+    start: usize,
+    end: usize,
+) {
+    use core::arch::aarch64::*;
+    let x = xp as *const f32;
+    let w = wp as *const f32;
+    let o = op as *mut f32;
+    let bias = bp as *const f32;
+    let mut r = start;
+    while r < end {
+        let nr = (end - r).min(4);
+        for c in 0..n {
+            // Two accumulators per row keep eight lanes in flight, like AVX2.
+            let mut a = [[vdupq_n_f32(0.); 2]; 4];
+            let mut j = 0;
+            while j + 8 <= k {
+                let v0 = vld1q_f32(w.add(c * k + j));
+                let v1 = vld1q_f32(w.add(c * k + j + 4));
+                for t in 0..nr {
+                    let xr = x.add((r + t) * k + j);
+                    a[t][0] = vfmaq_f32(a[t][0], v0, vld1q_f32(xr));
+                    a[t][1] = vfmaq_f32(a[t][1], v1, vld1q_f32(xr.add(4)));
+                }
+                j += 8
+            }
+            for t in 0..nr {
+                let mut v = vaddvq_f32(vaddq_f32(a[t][0], a[t][1]));
                 for q in j..k {
                     v += *w.add(c * k + q) * *x.add((r + t) * k + q)
                 }
